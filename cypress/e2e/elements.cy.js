@@ -50,7 +50,7 @@ describe('work with basic elements', () => {
     cy.get("[name=formSexo]").should('have.length', 2)
   })
 
-  it.only('CheckBox', () => {
+  it('CheckBox', () => {
     cy.get('#formComidaPizza')
       .click()
       .should('be.checked')
@@ -62,5 +62,19 @@ describe('work with basic elements', () => {
       .should('not.be.checked')
       cy.get('#formComidaCarne')
       .should('be.checked')
+  })
+
+  it('Combo', () => {
+    cy.get('[data-test="dataEscolaridade"]')
+      .select('2o grau incompleto')
+      .should('have.value', '2grauincomp')
+    cy.get('[data-test="dataEscolaridade"]')
+      .select('1graucomp')
+      .should('have.value', '1graucomp')
+  })
+
+  it.only('Multiple Combo', () => {
+    cy.get('[data-testid="dataEsportes"]')
+      .select(['natacao', 'Corrida', 'nada'])
   })
 })
